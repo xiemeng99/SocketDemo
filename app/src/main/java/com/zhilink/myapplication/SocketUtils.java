@@ -49,11 +49,11 @@ public class SocketUtils {
     /**
      * 服务器地址
      */
-    private String host = "192.168.12.216";
+    private String host = "";
     /**
      * 连接端口号
      */
-    private int port = 8888;
+    private int port = 0;
 
     private int timeout = 1000 * 20;
 
@@ -64,7 +64,7 @@ public class SocketUtils {
     private PrintWriter out = null;
 
     /**
-     * 获取ip地址
+     * 获取本机ip地址
      */
     public String getLocalIpAddress() {
         try {
@@ -198,7 +198,7 @@ public class SocketUtils {
                     //如果输入流没有断开
                     if (!socket.isClosed() && socket.isConnected() && !socket.isInputShutdown()) {
                         try {
-                            char[] bt = new char[1024];
+                            char[] bt = new char[16];
                             final StringBuilder reqStr = new StringBuilder();
                             do {
                                 if ((in.read(bt)) != -1) {

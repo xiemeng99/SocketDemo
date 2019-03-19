@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onSuccess(String msg) {
                         String s = mTvMessage.getText().toString();
-                        mTvMessage.setText(s + "\n" + msg);
+                        mTvMessage.setText(s +  msg);
                     }
 
                     @Override
