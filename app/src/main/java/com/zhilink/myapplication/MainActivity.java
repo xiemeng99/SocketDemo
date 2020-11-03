@@ -1,8 +1,11 @@
 package com.zhilink.myapplication;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    private static final String TAG = "MainActivity";
     /**
      * IP地址
      */
@@ -77,6 +80,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnUnConnect.setOnClickListener(this);
         mTvMessage = findViewById(R.id.tv_message);
         mTvMessage.setOnClickListener(this);
+        mEtIp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.i(TAG,"onEditorAction");
+                return false;
+            }
+        });
+
+        mEtPort.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.i(TAG,"onEditorAction");
+                return false;
+            }
+        });
     }
 
     @Override

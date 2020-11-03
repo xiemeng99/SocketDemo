@@ -182,6 +182,9 @@ public class SocketUtils {
      * 读取服务器发来的信息，并通过Handler发给UI线程
      */
     public void receiveMsg(final ReceiveMsgListener listener) {
+        if (null==socket){
+            return;
+        }
         ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
                 .setNameFormat("receiveMsg-%d").build();
         ExecutorService singleThreadPool = new ThreadPoolExecutor(1, 1,
