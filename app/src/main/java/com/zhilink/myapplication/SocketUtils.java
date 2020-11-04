@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -146,7 +147,17 @@ public class SocketUtils {
             public void run() {
                 if (socket != null && socket.isConnected()) {
                     if (out != null) {
-                        out.println(data);
+//                        out.println(data);
+                        OutputStream os = null;
+                        try {
+                            os = socket.getOutputStream();
+//                            String message = data + "\r\n";
+                            String message = data;
+                            os.write(message.getBytes());
+                            os.flush();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
